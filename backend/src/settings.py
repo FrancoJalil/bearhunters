@@ -37,6 +37,9 @@ if ENVIRONMENT == 'production':
     DEBUG = False
     ALLOWED_HOSTS = ALLOWED_HOSTS.split(",") if ALLOWED_HOSTS else None
     CORS_ALLOWED_ORIGINS = CORS_ALLOWED_ORIGINS.split(",") if CORS_ALLOWED_ORIGINS else None
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    WSGI_APPLICATION = 'src.wsgi.application'
+
 else:
     DEBUG = True
     ALLOWED_HOSTS = ["*"]
@@ -73,7 +76,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -82,6 +84,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if not DEBUG:
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 ROOT_URLCONF = 'src.urls'
 
@@ -101,7 +106,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'src.wsgi.application'
+
 
 
 # Database
@@ -161,7 +166,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type
