@@ -29,19 +29,17 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 if ENVIRONMENT == 'production':
     DEBUG = False
-    ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
-    CORS_ALLOWED_ORIGINS = [os.environ.get("CORS_ALLOWED_ORIGINS")]
+    ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS").split(",")]
+    CORS_ALLOWED_ORIGINS = [os.environ.get("CORS_ALLOWED_ORIGINS").split(",")]
 else:
     DEBUG = True
     ALLOWED_HOSTS = ["*"]
     CORS_ALLOWED_ORIGINS = [
         "http://localhost:3000",
-        "http://localhost:5173",
-        "https://devtunnels.ms",
-        "https://5s2jldsr-5173.brs.devtunnels.ms",
+        "http://localhost:5173"
     ]
 
-CSRF_TRUSTED_ORIGINS = [os.environ.get("CSRF_TRUSTED_ORIGINS")]
+CSRF_TRUSTED_ORIGINS = [os.environ.get("CSRF_TRUSTED_ORIGINS").split(",")]
 
 # Application definition
 
