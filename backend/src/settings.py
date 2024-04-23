@@ -31,7 +31,6 @@ if ENVIRONMENT == 'production':
     DEBUG = False
     ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
     CORS_ALLOWED_ORIGINS = [os.environ.get("CORS_ALLOWED_ORIGINS")]
-    CSRF_TRUSTED_ORIGINS = [os.environ.get("CSRF_TRUSTED_ORIGINS")]
 else:
     DEBUG = True
     ALLOWED_HOSTS = ["*"]
@@ -42,6 +41,7 @@ else:
         "https://5s2jldsr-5173.brs.devtunnels.ms",
     ]
 
+CSRF_TRUSTED_ORIGINS = [os.environ.get("CSRF_TRUSTED_ORIGINS")]
 
 # Application definition
 
