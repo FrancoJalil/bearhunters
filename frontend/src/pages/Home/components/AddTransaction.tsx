@@ -45,20 +45,23 @@ export const AddTransaction = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [stock, setStock] = useState<Stock | undefined>(undefined);
     const [date, setDate] = useState<Date | undefined>(undefined);
-    const [currentPrice, setCurrentPrice] = useState<number>(0);
+    const [currentPrice, setCurrentPrice] = useState<number | undefined>(0);
     const [quantity, setQuantity] = useState<number>(1);
     const [total, setTotal] = useState<number>(0);
     const [transactionType, setTransactionType] = useState<string>("buy");
     const [selectedTab, setSelectedTab] = useState("buy");
 
     const handleChangeTotal = () => {
-        setTotal(currentPrice && quantity * currentPrice)
+        setTotal(currentPrice ? quantity * currentPrice : 0)
     }
 
     const handleChangePrice = (price: number) => {
-        setCurrentPrice(price)
-
-    }
+        if (!isNaN(price)) {
+            setCurrentPrice(price);
+        } else {
+            setCurrentPrice(undefined)
+        }
+    };
 
     const handleChangeQuantity = (value: number) => {
         setQuantity(value)
@@ -152,17 +155,19 @@ export const AddTransaction = () => {
                                 <div className='flex gap-5 w-full'>
                                     <div className="space-y-1">
                                         <Label htmlFor="quantity">Quantity</Label>
-                                        <Input 
-                                        id="quantity" 
-                                        placeholder="0" 
-                                        value={quantity}
-                                        onChange={(e) => handleChangeQuantity(Number(e.target.value))} />
+                                        <Input
+                                            id="quantity"
+                                            placeholder="0"
+                                            value={quantity}
+                                            onChange={(e) => handleChangeQuantity(Number(e.target.value))} />
                                     </div>
                                     <div className="space-y-1">
                                         <Label htmlFor="price">Price per stock</Label>
-                                        <Input 
-                                        id="price" 
-                                        value={currentPrice} onChange={(e) => handleChangePrice(Number(e.target.value))} />
+                                        <Input
+                                            id="price"
+                                            value={currentPrice}
+                                            type='number'
+                                            onChange={(e) => handleChangePrice(parseFloat(e.target.value))} />
                                     </div>
                                 </div>
 
@@ -222,14 +227,18 @@ export const AddTransaction = () => {
                                 <div className='flex gap-5 w-full'>
                                     <div className="space-y-1">
                                         <Label htmlFor="quantity">Quantity</Label>
-                                        <Input 
-                                        id="quantity" 
-                                        value={quantity}
-                                        placeholder="0" onChange={(e) => handleChangeQuantity(Number(e.target.value))} />
+                                        <Input
+                                            id="quantity"
+                                            value={quantity}
+                                            placeholder="0" onChange={(e) => handleChangeQuantity(Number(e.target.value))} />
                                     </div>
                                     <div className="space-y-1">
                                         <Label htmlFor="price">Price per stock</Label>
-                                        <Input id="price" value={currentPrice} onChange={(e) => handleChangePrice(Number(e.target.value))} />
+                                        <Input
+                                            id="price"
+                                            value={currentPrice}
+                                            type='number'
+                                            onChange={(e) => handleChangePrice(parseFloat(e.target.value))} />
                                     </div>
                                 </div>
 
