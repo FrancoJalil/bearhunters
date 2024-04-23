@@ -52,7 +52,6 @@ export const StocksTable = ({ holdings }: Props) => {
     const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false)
     const [openDisplayTransactions, setOpenDisplayTransactions] = useState(false)
     const [symbol, setSymbol] = useState('')
-    const [quantity, setQuantity] = useState<number>()
 
     const [sortColumn, setSortColumn] = useState('symbol');
     const [sortDirection, setSortDirection] = useState('asc');
@@ -164,10 +163,9 @@ export const StocksTable = ({ holdings }: Props) => {
 
 
 
-    const displayTransactions = async (symbol: string, quantity: number) => {
+    const displayTransactions = async (symbol: string) => {
         setOpenDisplayTransactions(true)
         setSymbol(symbol)
-        setQuantity(quantity)
     }
 
     const handleOpenDeleteHoldingModal = (symbol: string) => {
@@ -201,7 +199,6 @@ export const StocksTable = ({ holdings }: Props) => {
                 symbol={symbol}
                 open={openDisplayTransactions}
                 setOpenDisplayTransactions={setOpenDisplayTransactions}
-                quantity={quantity}
             />
 
             <TableHeader>
@@ -301,7 +298,7 @@ export const StocksTable = ({ holdings }: Props) => {
                                                 <DropdownMenuContent align="end">
                                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                                                     <DropdownMenuSeparator />
-                                                    <DropdownMenuItem onClick={() => displayTransactions(holding.symbol, holding.quantity)}>View transactions</DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => displayTransactions(holding.symbol)}>View transactions</DropdownMenuItem>
                                                     <DropdownMenuItem onClick={() => handleOpenDeleteHoldingModal(holding.symbol)}>Delete all</DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>

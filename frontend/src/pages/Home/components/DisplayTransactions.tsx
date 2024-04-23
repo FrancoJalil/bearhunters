@@ -44,10 +44,9 @@ type Props = {
     symbol: string
     open: boolean
     setOpenDisplayTransactions: React.Dispatch<React.SetStateAction<boolean>>
-    quantity: number | undefined
 }
 
-export const DisplayTransactions = ({ open, symbol, quantity, setOpenDisplayTransactions }: Props) => {
+export const DisplayTransactions = ({ open, symbol, setOpenDisplayTransactions }: Props) => {
 
     const { transactionCompleted, setTransactionCompleted } = useContext(TransactionContext) as TransactionContextType
 
