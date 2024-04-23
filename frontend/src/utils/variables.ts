@@ -1,1 +1,1 @@
-export const urlBase: string = "http://localhost:8000"
+export const urlBase: string = "https://api.bearhunters.site"
