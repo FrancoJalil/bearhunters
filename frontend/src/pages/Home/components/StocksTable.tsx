@@ -52,7 +52,7 @@ export const StocksTable = ({ holdings }: Props) => {
     const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false)
     const [openDisplayTransactions, setOpenDisplayTransactions] = useState(false)
     const [symbol, setSymbol] = useState('')
-    const [quantity, setQuantity] = useState('')
+    const [quantity, setQuantity] = useState<number>()
 
     const [sortColumn, setSortColumn] = useState('symbol');
     const [sortDirection, setSortDirection] = useState('asc');
@@ -64,7 +64,7 @@ export const StocksTable = ({ holdings }: Props) => {
         const newStockPriceAnimations: { [key: string]: 'green' | 'red' | undefined } = {};
         if (holdings) {
             holdings.forEach((item) => {
-                const currentPrice = parseFloat(item.current_price);
+                const currentPrice = item.current_price;
                 const symbol = item.symbol;
 
                 if (!isNaN(currentPrice) && prevStockPrices.current[symbol] !== undefined) {
@@ -164,7 +164,7 @@ export const StocksTable = ({ holdings }: Props) => {
 
 
 
-    const displayTransactions = async (symbol: string, quantity: string) => {
+    const displayTransactions = async (symbol: string, quantity: number) => {
         setOpenDisplayTransactions(true)
         setSymbol(symbol)
         setQuantity(quantity)

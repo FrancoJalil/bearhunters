@@ -44,7 +44,7 @@ type Props = {
     symbol: string
     open: boolean
     setOpenDisplayTransactions: React.Dispatch<React.SetStateAction<boolean>>
-    quantity: string | undefined
+    quantity: number | undefined
 }
 
 export const DisplayTransactions = ({ open, symbol, quantity, setOpenDisplayTransactions }: Props) => {
