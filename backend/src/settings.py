@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 from datetime import timedelta
 import os
@@ -28,10 +29,18 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 if ENVIRONMENT == 'production':
     DEBUG = False
-    ALLOWED_HOSTS = [] 
+    ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
+    CORS_ALLOWED_ORIGINS = [os.environ.get("CORS_ALLOWED_ORIGINS")]
+    CSRF_TRUSTED_ORIGINS = [os.environ.get("CSRF_TRUSTED_ORIGINS")]
 else:
     DEBUG = True
     ALLOWED_HOSTS = ["*"]
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://devtunnels.ms",
+        "https://5s2jldsr-5173.brs.devtunnels.ms",
+    ]
 
 
 # Application definition
@@ -54,7 +63,7 @@ INSTALLED_APPS = [
 
     'user',
     'portfolio',
-    #'paypal',
+    # 'paypal',
 
 ]
 
@@ -94,11 +103,10 @@ WSGI_APPLICATION = 'src.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
-        #default='sqlite:///db.sqlite3',
+        # default='sqlite:///db.sqlite3',
         default=os.environ.get('DB'),
         ssl_require=True,
     )
@@ -158,7 +166,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 # AUTH
 REST_FRAMEWORK = {
 
@@ -196,7 +203,8 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get(
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 
 # JWT
 SIMPLE_JWT = {
@@ -237,24 +245,3 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
-
-
-
-
-
-if ENVIRONMENT == 'local':
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "https://devtunnels.ms",
-        "https://5s2jldsr-5173.brs.devtunnels.ms",
-]
-
-else:
-    CORS_ALLOWED_ORIGINS = [
-        
-    ]
-
-CSRF_TRUSTED_ORIGINS = [
-    
-]
