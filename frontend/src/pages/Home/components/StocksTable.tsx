@@ -237,6 +237,7 @@ export const StocksTable = ({ holdings }: Props) => {
 
                             return (
                                 <MotionTableRow
+                                    className="hover:bg-transparent"
                                     key={holding.symbol}
                                     animate={{
                                         backgroundColor: stockPriceAnimations[holding.symbol] === 'green' ? 'rgba(16, 185, 129, 0.2)' : stockPriceAnimations[holding.symbol] === 'red' ? 'rgba(239, 68, 68, 0.2)' : undefined,
