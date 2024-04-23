@@ -34,7 +34,7 @@ export const DialogInfo = ({ info, open, setOpen }: Props) => {
                                         <div className="flex gap-2">
                                             {
                                                 stock.logo_id ?
-                                                    <img width={20} src={`https://s3-symbol-logo.tradingview.com/${stock.logo_id}.svg`} alt="" />
+                                                    <img width={20} src={`https://s3-symbol-logo.tradingview.com/${stock.logo_id}.svg`} alt={info.name} />
                                                     :
                                                     <div className='w-[20px] h-[20px] bg-slate-500'></div>
                                             }
