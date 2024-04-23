@@ -58,7 +58,6 @@ export const DisplayTransactions = ({ open, symbol, quantity, setOpenDisplayTran
     const [openEditModal, setOpenEditModal] = useState(false)
     const [transaction, setTransaction] = useState<transaction | undefined>()
 
-
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const pageSize = 10; // Tamaño de la página
@@ -135,7 +134,7 @@ export const DisplayTransactions = ({ open, symbol, quantity, setOpenDisplayTran
 
                 <DrawerHeader className="flex justify-center w-full">
                     <DrawerTitle>{symbol} Transactions</DrawerTitle>
-                    <DrawerDescription>({quantity})</DrawerDescription>
+                    <DrawerDescription>({transactions?.length})</DrawerDescription>
                 </DrawerHeader>
                 <Table className="mx-auto lg:max-w-[75.5%] overflow-scroll h-full">
                     <TableHeader>
