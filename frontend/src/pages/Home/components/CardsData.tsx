@@ -223,7 +223,7 @@ export const CardsData = ({ bestPerfomer, worstPerfomer, money }: Props) => {
                     >
                         <span className="text-tremor-default text-tremor-content dark:text-dark-tremor-content gap-2 flex flex-col items-start justify-between">
                             <span>All Time Profit:</span>
-                            <div className='flex gap-1 items-center justify-between w-full'>
+                            <div className='flex flex-col lg:flex-row sm:items-start  gap-1 items-center justify-between w-full'>
 
                                 <motion.span
                                     animate={{
