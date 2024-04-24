@@ -22,7 +22,7 @@ export const StocksSectors = ({sectorCount}: Props) => {
             {
                 sectorCount &&
 
-                <Card className='flex lg:w-min lg:min-w-[300px] lg:flex-col items-center justify-center'>
+                <Card className='flex xl:w-min lg:min-w-[300px] lg:flex-col items-center justify-center'>
 
 
                     <DonutChart

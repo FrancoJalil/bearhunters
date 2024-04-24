@@ -211,7 +211,7 @@ export const Home = () => {
 
         <div className="flex flex-col justify-between items-center p-5 gap-5 max-w-[1366px] mx-auto " id="app-container">
 
-            <div className="flex flex-col lg:flex-row justify-between items-start gap-5 w-full h-full">
+            <div className="flex flex-col xl:flex-row justify-between items-start gap-5 w-full h-full">
 
                 <div className='flex flex-col items-center gap-5 w-full h-full'>
 
@@ -273,7 +273,7 @@ export const Home = () => {
                     animate={{
                         x: 0
                     }}
-                    className="flex flex-col w-full md:w-fit justify-center items-center">
+                    className="flex flex-col w-full lg:w-fit justify-center items-center">
                     <StockNews
                     />
 

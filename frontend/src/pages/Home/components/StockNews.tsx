@@ -28,7 +28,7 @@ export const StockNews = () => {
 
     return (
         <>
-            <div className="lg:max-w-[300px] flex lg:flex-col gap-5 overflow-x-scroll w-full lg:w-fit lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[100vh] flex-shrink-0 py-5 lg:py-0 md:px-5">
+            <div className="xl:max-w-[300px] flex xl:flex-col gap-5 overflow-x-scroll w-full xl:w-fit xl:overflow-y-scroll xl:overflow-x-hidden xl:h-[100vh] flex-shrink-0 py-5 xl:py-0">
                 {
                     stocksNews ?
                         stocksNews.map((stockNews) => (
@@ -36,28 +36,28 @@ export const StockNews = () => {
 
                                 <a target='_blank' href={stockNews.link}>
 
-                                    <img className="lg:min-w-[280px] w-full aspect-video object-cover" src={stockNews.thumbnail?.resolutions[0].url} alt="" />
+                                    <img className="xl:min-w-[280px] w-full aspect-video object-cover" src={stockNews.thumbnail?.resolutions[0].url} alt="" />
                                     <h3 className='mt-2'>{stockNews.title}</h3>
 
                                 </a>
-                                <Divider className='hidden lg:block' />
+                                <Divider className='hidden xl:block' />
                             </div>
                         ))
                         :
                         <div className='min-w-full snap-center flex flex-col items-center gap-2'>
 
-                            <Skeleton className="lg:min-w-[280px] w-full aspect-video object-cover" />
+                            <Skeleton className="xl:min-w-[280px] w-full aspect-video object-cover" />
                             <Skeleton className="h-[16px] w-[280px]" />
 
-                            <Divider className='hidden lg:block' />
+                            <Divider className='hidden xl:block' />
 
-                            <Skeleton className="lg:min-w-[280px] w-full aspect-video object-cover" />
+                            <Skeleton className="xl:min-w-[280px] w-full aspect-video object-cover" />
 
                             <Skeleton className="h-[16px] w-[280px]" />
 
-                            <Divider className='hidden lg:block' />
+                            <Divider className='hidden xl:block' />
 
-                            <Skeleton className="lg:min-w-[280px] w-full aspect-video object-cover" />
+                            <Skeleton className="xl:min-w-[280px] w-full aspect-video object-cover" />
 
                             <Skeleton className="h-[16px] w-[280px]" />
 
