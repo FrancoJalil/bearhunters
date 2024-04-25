@@ -159,7 +159,7 @@ export const DisplayTransactions = ({ open, symbol, setOpenDisplayTransactions }
                                                 <TableCell>${transaction.price}</TableCell>
                                                 <TableCell>{transaction.quantity}</TableCell>
                                                 <TableCell>{transaction.transaction_type}</TableCell>
-                                                <TableCell>{transaction.transaction_date}</TableCell>
+                                                <TableCell className="whitespace-nowrap">{transaction.transaction_date}</TableCell>
                                                 <TableCell className="flex justify-end">
                                                     <DropdownMenu>
                                                         <DropdownMenuTrigger asChild>
