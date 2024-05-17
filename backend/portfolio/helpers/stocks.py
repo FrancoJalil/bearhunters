@@ -1,5 +1,4 @@
 import requests
-from functools import lru_cache
 from django.db.models import Sum
 from datetime import timedelta
 import yfinance as yf
@@ -90,7 +89,6 @@ def get_sp500_data(first_day, current_date, cash_days):
     return sp500_percents
 
 
-@lru_cache(maxsize=124)
 def get_logo_id(symbol):
     response = requests.get(f"https://symbol-search.tradingview.com/symbol_search/v3/?text={symbol.split('.')[0]}&hl=1&exchange=&lang=en&search_type=stocks&domain=production&sort_by_country=US&logoUrl=true")
     if response.status_code == 200:
