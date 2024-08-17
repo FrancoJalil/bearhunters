@@ -223,7 +223,7 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": False,
 
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": os.envieorn.get("JWT_KEY"),
+    "SIGNING_KEY": os.environ.get("JWT_KEY"),
     "VERIFYING_KEY": os.environ.get("JWT_PUBLIC_KEY"),
     "AUDIENCE": None,
     "ISSUER": None,
